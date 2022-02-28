@@ -7,6 +7,8 @@ public class AttackHandler : MonoBehaviour
     [SerializeField] GameObject attackPrefab;
     [SerializeField] float attackSpeed;
 
+    [System.NonSerialized] public bool isAttacking;
+
     SelectionHandler selectionHandler;
     GameObject attackGameObject;
 
@@ -32,7 +34,10 @@ public class AttackHandler : MonoBehaviour
         if (!Input.GetKeyDown(KeyCode.Space))
             return;
 
-        
+        if (isAttacking)
+            return;
+
+        isAttacking = true;
         attackGameObject = Instantiate(attackPrefab);
         attackGameObject.transform.position = startPosition;
     }
