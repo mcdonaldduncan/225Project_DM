@@ -11,11 +11,15 @@ public class AttackHandler : MonoBehaviour
 
     SelectionHandler selectionHandler;
     GameObject attackGameObject;
+    TurnManager turnManager;
 
     Vector3 startPosition;
 
+    int enemiesDefeated;
+
     void Start()
     {
+        turnManager = GameObject.Find("TurnManager").GetComponent<TurnManager>();
         selectionHandler = GameObject.Find("SelectionHandler").GetComponent<SelectionHandler>();
         startPosition = attackPrefab.transform.position;
     }
@@ -30,9 +34,12 @@ public class AttackHandler : MonoBehaviour
     {
         if(selectionHandler.selection == null)
             return;
-
+        if (!turnManager.isPlayerTurn)
+            return;
         if (!Input.GetKeyDown(KeyCode.Space))
             return;
+
+        turnManager.isPlayerTurn = false;
 
         if (isAttacking)
             return;
