@@ -112,7 +112,7 @@ GameObject:
   - component: {fileID: 2400072592339577459}
   - component: {fileID: 2400072592339577456}
   m_Layer: 0
-  m_Name: Cylinder
+  m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -125,7 +125,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2400072592339577417}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.96867, y: 0.2985692, z: -2.0365994}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -223,6 +223,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   medHealth: {fileID: 2100000, guid: 57ed67456ff290e4c92122fa9f0c1184, type: 2}
   lowHealth: {fileID: 2100000, guid: b4239926501e3a04fbc35ff9d0a51559, type: 2}
+  health: 5
 --- !u!54 &2400072592339577456
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -2,27 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyCollision : MonoBehaviour
+public class EntityCollision : MonoBehaviour
 {
     [SerializeField] Material medHealth;
     [SerializeField] Material lowHealth;
+    [SerializeField] int health;
 
-    private GameObject healthBar;
+    GameObject healthBar;
 
-    private Vector3 healthScale;
+    Vector3 healthScale;
+    
+    int startingHealth;
 
-    private int health;
-    private int startingHealth;
-
+    // Assign value of starting health and cache healthbar gameobject for reference
     private void Start()
     {
-        health = 5;
         startingHealth = health;
         healthBar = transform.GetChild(0).gameObject;
-
         healthScale = healthBar.transform.localScale;
     }
 
+    // On collision, reduce health by one and scale health bar to reflect change
     private void OnCollisionEnter(Collision collision)
     {
         health--;
@@ -32,17 +32,18 @@ public class EnemyCollision : MonoBehaviour
         
     }
 
+    // Scale and color health bar based off remaining health compared to starting health
     void ScaleHealthBar()
     {
         float healthBarZ = ((float)health / (float)startingHealth) * 2;
 
         healthBar.transform.localScale = new Vector3(healthScale.x, healthScale.y, healthBarZ);
 
-        if (health <= (float)startingHealth / 3)
+        if (health <= (float)startingHealth / 3f)
         {
             healthBar.GetComponent<MeshRenderer>().material = lowHealth;
         }
-        else if (health <= (float)startingHealth / 3 * 2)
+        else if (health <= (float)startingHealth / 3f * 2f)
         {
             healthBar.GetComponent<MeshRenderer>().material = medHealth;
         }

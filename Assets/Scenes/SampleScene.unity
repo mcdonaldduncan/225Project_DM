@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &100607542 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2400072592339577417, guid: a58fe1cf714a6c14caf5fd53fe4b752b, type: 3}
+  m_PrefabInstance: {fileID: 2400072592227727442}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &158594204
 GameObject:
   m_ObjectHideFlags: 0
@@ -467,6 +472,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &744873801 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2400072592339577417, guid: a58fe1cf714a6c14caf5fd53fe4b752b, type: 3}
+  m_PrefabInstance: {fileID: 1402844946}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &752155841
 GameObject:
   m_ObjectHideFlags: 0
@@ -512,6 +522,8 @@ GameObject:
   - component: {fileID: 937199705}
   - component: {fileID: 937199704}
   - component: {fileID: 937199703}
+  - component: {fileID: 937199708}
+  - component: {fileID: 937199707}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -598,6 +610,42 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &937199707
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 937199702}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
+--- !u!114 &937199708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 937199702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a1940e736ac198498430ef7569eb391, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  medHealth: {fileID: 2100000, guid: 57ed67456ff290e4c92122fa9f0c1184, type: 2}
+  lowHealth: {fileID: 2100000, guid: b4239926501e3a04fbc35ff9d0a51559, type: 2}
+  health: 20
+--- !u!1 &951608228 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2400072592339577417, guid: a58fe1cf714a6c14caf5fd53fe4b752b, type: 3}
+  m_PrefabInstance: {fileID: 1562385684}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -811,7 +859,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackPrefab: {fileID: 8069259602757806501, guid: ab5e53f6c34c6b143975a9d53a13a62a, type: 3}
+  enemyAttackPrefab: {fileID: 8069259602757806501, guid: 7a8ac2dcf85d5a74bac4139b0e75ff9d, type: 3}
   attackSpeed: 15
+  attackDelay: 2
+  enemies:
+  - {fileID: 100607542}
+  - {fileID: 744873801}
+  - {fileID: 951608228}
+  player: {fileID: 937199702}
 --- !u!4 &1475901123
 Transform:
   m_ObjectHideFlags: 0

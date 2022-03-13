@@ -11,6 +11,7 @@ public class SelectionHandler : MonoBehaviour
         SelectTarget();
     }
 
+    // On click, cast ray and assign any hit enemy gameobject transform as selection
     void SelectTarget()
     {
         if (!Input.GetMouseButtonDown(0))

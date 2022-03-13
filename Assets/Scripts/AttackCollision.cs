@@ -11,6 +11,7 @@ public class AttackCollision : MonoBehaviour
         attackHandler = GameObject.Find("AttackHandler").GetComponent<AttackHandler>();
     }
 
+    // On collision destroy attack gameobject and reset isAttacking
     private void OnCollisionEnter(Collision collision)
     {
         Destroy(gameObject);
