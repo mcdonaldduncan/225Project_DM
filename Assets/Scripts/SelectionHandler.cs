@@ -15,9 +15,7 @@ public class SelectionHandler : MonoBehaviour
     void SelectTarget()
     {
         if (!Input.GetMouseButtonDown(0))
-        {
             return;
-        }
 
         Vector3 mp = Input.mousePosition;
         Ray ray = Camera.main.ScreenPointToRay(mp);
