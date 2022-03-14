@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
-    int enemiesDefeated;
+    [System.NonSerialized] public int enemiesDefeated;
 
     void Start()
     {
