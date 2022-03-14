@@ -14,9 +14,10 @@ public class AttackHandler : MonoBehaviour
     [System.NonSerialized] public bool isAttacking;
 
     SelectionHandler selectionHandler;
+    TurnManager turnManager;
+
     GameObject playerAttackGameObject;
     GameObject enemyAttackGameObject;
-    TurnManager turnManager;
 
     Vector3 playerAttackPosition;
     Vector3 enemyAttackPosition;
