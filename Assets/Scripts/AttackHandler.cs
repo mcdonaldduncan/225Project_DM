@@ -122,7 +122,7 @@ public class AttackHandler : MonoBehaviour
     }
 
     // Instantiate enemy attack after delay
-    IEnumerator EnemyAttackDelay(float delay, int index)
+    IEnumerator EnemyAttackDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
         
@@ -145,7 +145,7 @@ public class AttackHandler : MonoBehaviour
         turnManager.isPlayerTurn = true;
         isAttacking = true;
         enemyAttackPosition = new Vector3(enemies[index].transform.position.x - xOffset, enemies[index].transform.position.y, enemies[index].transform.position.z);
-        StartCoroutine(EnemyAttackDelay(attackDelay, index));
+        StartCoroutine(EnemyAttackDelay(attackDelay));
     }
 
 }
