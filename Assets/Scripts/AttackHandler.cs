@@ -69,7 +69,6 @@ public class AttackHandler : MonoBehaviour
 
         float step = attackSpeed * Time.deltaTime;
         playerAttackGameObject.transform.position = Vector3.MoveTowards(playerAttackGameObject.transform.position, selectionHandler.selection.transform.position, step);
-
     }
 
     // Move enemy attack towards player
