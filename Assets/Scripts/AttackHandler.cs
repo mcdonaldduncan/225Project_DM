@@ -93,7 +93,7 @@ public class AttackHandler : MonoBehaviour
     }
 
     // Check enemies to see if any are not null, if all enemies are null return false
-    bool CheckEnemies()
+    public bool CheckEnemies()
     {
         foreach (var enemy in enemies)
         {
