@@ -28,7 +28,7 @@ public class HighlightObject : MonoBehaviour
         rend.material.color = Color.cyan;
         indicator = Instantiate(indicatorPrefab);
         indicator.transform.position = indicatorPosition;
-        
+        indicator.transform.SetParent(gameObject.transform);
     }
 
     // Reset renderer color on mouse exit
