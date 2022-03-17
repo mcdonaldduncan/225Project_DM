@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1156,6 +1156,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 752155842}
     m_Modifications:
+    - target: {fileID: 2400072590771762925, guid: a58fe1cf714a6c14caf5fd53fe4b752b, type: 3}
+      propertyPath: m_Name
+      value: HealthBar
+      objectReference: {fileID: 0}
     - target: {fileID: 2400072592339577417, guid: a58fe1cf714a6c14caf5fd53fe4b752b, type: 3}
       propertyPath: m_Name
       value: Enemy1
@@ -1277,6 +1281,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 752155842}
     m_Modifications:
+    - target: {fileID: 2400072590771762925, guid: a58fe1cf714a6c14caf5fd53fe4b752b, type: 3}
+      propertyPath: m_Name
+      value: HealthBar
+      objectReference: {fileID: 0}
     - target: {fileID: 2400072592339577417, guid: a58fe1cf714a6c14caf5fd53fe4b752b, type: 3}
       propertyPath: m_Name
       value: Enemy2
@@ -1412,6 +1420,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 752155842}
     m_Modifications:
+    - target: {fileID: 2400072590771762925, guid: a58fe1cf714a6c14caf5fd53fe4b752b, type: 3}
+      propertyPath: m_Name
+      value: HealthBar
+      objectReference: {fileID: 0}
     - target: {fileID: 2400072592339577417, guid: a58fe1cf714a6c14caf5fd53fe4b752b, type: 3}
       propertyPath: m_Name
       value: Enemy
