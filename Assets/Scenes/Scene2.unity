@@ -3083,6 +3083,10 @@ PrefabInstance:
       propertyPath: highHealth
       value: 
       objectReference: {fileID: 2100000, guid: 702e3ec7f6efab244942d1f49153045b, type: 2}
+    - target: {fileID: 2400072592339577459, guid: a58fe1cf714a6c14caf5fd53fe4b752b, type: 3}
+      propertyPath: startingHealth
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a58fe1cf714a6c14caf5fd53fe4b752b, type: 3}
 --- !u!1001 &819943352
@@ -3743,6 +3747,7 @@ MonoBehaviour:
   lowHealth: {fileID: 2100000, guid: b4239926501e3a04fbc35ff9d0a51559, type: 2}
   highHealth: {fileID: 2100000, guid: 702e3ec7f6efab244942d1f49153045b, type: 2}
   health: 20
+  startingHealth: 20
 --- !u!4 &942705347 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 86873b3ddd4a1a548a9d25799c621b3d, type: 3}
@@ -4867,6 +4872,10 @@ PrefabInstance:
       propertyPath: highHealth
       value: 
       objectReference: {fileID: 2100000, guid: 702e3ec7f6efab244942d1f49153045b, type: 2}
+    - target: {fileID: 2400072592339577459, guid: a58fe1cf714a6c14caf5fd53fe4b752b, type: 3}
+      propertyPath: startingHealth
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a58fe1cf714a6c14caf5fd53fe4b752b, type: 3}
 --- !u!1 &1475901121
@@ -5179,6 +5188,10 @@ PrefabInstance:
       propertyPath: highHealth
       value: 
       objectReference: {fileID: 2100000, guid: 702e3ec7f6efab244942d1f49153045b, type: 2}
+    - target: {fileID: 2400072592339577459, guid: a58fe1cf714a6c14caf5fd53fe4b752b, type: 3}
+      propertyPath: startingHealth
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a58fe1cf714a6c14caf5fd53fe4b752b, type: 3}
 --- !u!1 &1563546757 stripped
@@ -6444,5 +6457,9 @@ PrefabInstance:
       propertyPath: highHealth
       value: 
       objectReference: {fileID: 2100000, guid: 702e3ec7f6efab244942d1f49153045b, type: 2}
+    - target: {fileID: 2400072592339577459, guid: a58fe1cf714a6c14caf5fd53fe4b752b, type: 3}
+      propertyPath: startingHealth
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a58fe1cf714a6c14caf5fd53fe4b752b, type: 3}

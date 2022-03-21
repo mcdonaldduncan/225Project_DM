@@ -8,6 +8,7 @@ public class EntityCollision : MonoBehaviour
     [SerializeField] Material lowHealth;
     [SerializeField] Material highHealth;
     [SerializeField] public int health;
+    [SerializeField] int startingHealth;
 
     ScoreManager ScoreManager;
 
@@ -15,15 +16,15 @@ public class EntityCollision : MonoBehaviour
 
     Vector3 healthScale;
     
-    int startingHealth;
+    
 
     // Assign value of starting health and cache healthbar gameobject for reference
     private void Start()
     {
-        startingHealth = health;
         healthBar = transform.GetChild(0).gameObject;
         healthScale = healthBar.transform.localScale;
         ScoreManager = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
+        ScaleHealthBar();
     }
 
     // On collision, reduce health by one and scale health bar to reflect change

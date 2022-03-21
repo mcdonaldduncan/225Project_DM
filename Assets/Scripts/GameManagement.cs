@@ -11,6 +11,7 @@ public class GameManagement : MonoBehaviour
 
     ScoreManager scoreManager;
     AttackHandler attackHandler;
+    EntityCollision playerStats;
     bool shouldContinue;
 
     // Cache components and assign boolean values
@@ -19,6 +20,10 @@ public class GameManagement : MonoBehaviour
         scoreManager = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
         attackHandler = GameObject.Find("AttackHandler").GetComponent<AttackHandler>();
         shouldContinue = true;
+
+        // Cache playerstats components and assign player health based on persistent value
+        playerStats = player.GetComponent<EntityCollision>();
+        playerStats.health = PlayerPrefs.GetInt("CurrentHealth");
     }
 
     // Run advance player and next scene check
@@ -36,6 +41,10 @@ public class GameManagement : MonoBehaviour
         if (!shouldContinue)
             return;
 
+        //Vector3 offsetVector = player.transform.position + new Vector3(35, 0, 0);
+        //float step = Time.deltaTime * 2;
+        //player.transform.position = Vector3.MoveTowards(player.transform.position, offsetVector, step);
+
         player.transform.Translate(35, 0, 0);
         shouldContinue = false;
         attackHandler.enemies[0] = boss;
@@ -48,8 +57,13 @@ public class GameManagement : MonoBehaviour
             return;
 
         scoreManager.levelsCleared++;
+
+        // Set persistent values
         PlayerPrefs.SetInt("TotalEnemies", scoreManager.enemiesDefeated);
         PlayerPrefs.SetInt("LevelsCleared", scoreManager.levelsCleared);
+        PlayerPrefs.SetInt("CurrentHealth", playerStats.health);
+
+        // Load next scene
         SceneManager.LoadScene(nextLevelName);
 
     }

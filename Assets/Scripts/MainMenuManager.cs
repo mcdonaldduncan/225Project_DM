@@ -10,6 +10,7 @@ public class MainMenuManager : MonoBehaviour
     {
         PlayerPrefs.SetInt("TotalEnemies", 0);
         PlayerPrefs.SetInt("LevelsCleared", 0);
+        PlayerPrefs.SetInt("CurrentHealth", 20);
     }
 
     // Method invoked by button click event to start game, load scene1
