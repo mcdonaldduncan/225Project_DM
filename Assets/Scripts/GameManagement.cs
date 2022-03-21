@@ -64,7 +64,6 @@ public class GameManagement : MonoBehaviour
 
         // Load next scene
         SceneManager.LoadScene(nextLevelName);
-
     }
 
     // Check if the game should end, if so save tracked scores and load game over scene
@@ -78,6 +77,7 @@ public class GameManagement : MonoBehaviour
         PlayerPrefs.SetInt("LevelsCleared", scoreManager.levelsCleared);
         PlayerPrefs.SetInt("CurrentHealth", playerStats.health);
 
+        // Load game over scene
         SceneManager.LoadScene("GameOver");
     }
 }
