@@ -11,8 +11,4 @@ public class TurnManager : MonoBehaviour
         isPlayerTurn = true;
     }
 
-    void Update()
-    {
-        
-    }
 }

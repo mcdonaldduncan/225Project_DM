@@ -6,7 +6,8 @@ public class EntityCollision : MonoBehaviour
 {
     [SerializeField] Material medHealth;
     [SerializeField] Material lowHealth;
-    [SerializeField] int health;
+    [SerializeField] Material highHealth;
+    [SerializeField] public int health;
 
     ScoreManager ScoreManager;
 
@@ -41,7 +42,7 @@ public class EntityCollision : MonoBehaviour
     }
 
     // Scale and color health bar based off remaining health compared to starting health
-    void ScaleHealthBar()
+    public void ScaleHealthBar()
     {
         float healthBarZ = (float)health / (float)startingHealth * 2;
 
@@ -54,6 +55,10 @@ public class EntityCollision : MonoBehaviour
         else if (health <= (float)startingHealth / 3f * 2f)
         {
             healthBar.GetComponent<MeshRenderer>().material = medHealth;
+        }
+        else
+        {
+            healthBar.GetComponent<MeshRenderer>().material = highHealth;
         }
     }
 }

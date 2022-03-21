@@ -4,17 +4,20 @@ using UnityEngine;
 
 public class AttackHandler : MonoBehaviour
 {
-    [SerializeField] GameObject[] enemies;
+    [SerializeField] public GameObject[] enemies;
     [SerializeField] GameObject attackPrefab;
     [SerializeField] GameObject enemyAttackPrefab;
     [SerializeField] GameObject player;
     [SerializeField] float attackSpeed;
     [SerializeField] float attackDelay;
+    [SerializeField] int healAmount;
 
     [System.NonSerialized] public bool isAttacking;
+    [System.NonSerialized] public bool isHealing;
 
     SelectionHandler selectionHandler;
     TurnManager turnManager;
+    EntityCollision playerStats;
 
     GameObject playerAttackGameObject;
     GameObject enemyAttackGameObject;
@@ -28,6 +31,7 @@ public class AttackHandler : MonoBehaviour
     {
         turnManager = GameObject.Find("TurnManager").GetComponent<TurnManager>();
         selectionHandler = GameObject.Find("SelectionHandler").GetComponent<SelectionHandler>();
+        playerStats = player.GetComponent<EntityCollision>();
     }
 
     void Update()
@@ -45,20 +49,37 @@ public class AttackHandler : MonoBehaviour
     // Check for a selection, check turn, check key input, check attack currently flying. If all pass, flip turn, set attacking to true and launch player attack
     void LaunchPlayerAttack()
     {
-        if(selectionHandler.selection == null)
-            return;
-        if (!turnManager.isPlayerTurn)
-            return;
+        // Check space bar down
         if (!Input.GetKeyDown(KeyCode.Space))
             return;
+        // Check player turn
+        if (!turnManager.isPlayerTurn)
+            return;
+        // Check if attack is currently executing
         if (isAttacking)
             return;
-
-        turnManager.isPlayerTurn = false;
-        isAttacking = true;
-        playerAttackPosition = new Vector3(player.transform.position.x + xOffset, player.transform.position.y, player.transform.position.z);
-        playerAttackGameObject = Instantiate(attackPrefab);
-        playerAttackGameObject.transform.position = playerAttackPosition;
+        // Check if the player has healing selected
+        if (isHealing)
+        {
+            turnManager.isPlayerTurn = false;
+            isAttacking = true;
+            playerStats.health += healAmount;
+            playerStats.ScaleHealthBar();
+            StartCoroutine(HealDelay(2));
+        }
+        // Check if player has an enemy selected
+        if (selectionHandler.selection == null)
+            return;
+        // Check if player does not have healing selected
+        if (!isHealing)
+        {
+            turnManager.isPlayerTurn = false;
+            isAttacking = true;
+            playerAttackPosition = new Vector3(player.transform.position.x + xOffset, player.transform.position.y, player.transform.position.z);
+            playerAttackGameObject = Instantiate(attackPrefab);
+            playerAttackGameObject.transform.position = playerAttackPosition;
+        }
+        
     }
 
     // Move player attack towards selected enemy
@@ -127,6 +148,13 @@ public class AttackHandler : MonoBehaviour
         
         enemyAttackGameObject = Instantiate(enemyAttackPrefab);
         enemyAttackGameObject.transform.position = enemyAttackPosition;
+    }
+
+    IEnumerator HealDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        isAttacking = false;
     }
 
     // Check playerturn, check isAttacking and check for non null enemies before flipping turn and starting delayed attack

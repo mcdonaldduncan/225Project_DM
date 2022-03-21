@@ -6,6 +6,7 @@ public class AttackCollision : MonoBehaviour
 {
     AttackHandler attackHandler;
 
+    // Cache attack handler
     private void Start()
     {
         attackHandler = GameObject.Find("AttackHandler").GetComponent<AttackHandler>();
