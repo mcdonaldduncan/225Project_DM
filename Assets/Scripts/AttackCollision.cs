@@ -18,7 +18,6 @@ public class AttackCollision : MonoBehaviour
         Destroy(gameObject);
         attackHandler.isAttacking = false;
     }
-
 }
 
 

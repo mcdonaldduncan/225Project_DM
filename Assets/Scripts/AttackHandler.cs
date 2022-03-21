@@ -42,8 +42,17 @@ public class AttackHandler : MonoBehaviour
 
     private void FixedUpdate()
     {
-        MovePlayerAttack();
-        MoveEnemyAttack();
+        if (playerAttackGameObject != null)
+        {
+            MoveAttack(playerAttackGameObject, selectionHandler.selection.transform);
+        }
+
+        if (enemyAttackGameObject != null)
+        {
+            MoveAttack(enemyAttackGameObject, player.transform);
+        }
+        //MovePlayerAttack();
+        //MoveEnemyAttack();
     }
 
     // Check for a selection, check turn, check key input, check attack currently flying. If all pass, flip turn, set attacking to true and launch player attack
@@ -79,10 +88,10 @@ public class AttackHandler : MonoBehaviour
             playerAttackGameObject = Instantiate(attackPrefab);
             playerAttackGameObject.transform.position = playerAttackPosition;
         }
-        
     }
 
-    // Move player attack towards selected enemy
+    // Move player attack towards selected enemy, deprecated
+    // Unused
     void MovePlayerAttack()
     {
         if (playerAttackGameObject == null)
@@ -92,7 +101,8 @@ public class AttackHandler : MonoBehaviour
         playerAttackGameObject.transform.position = Vector3.MoveTowards(playerAttackGameObject.transform.position, selectionHandler.selection.transform.position, step);
     }
 
-    // Move enemy attack towards player
+    // Move enemy attack towards player, deprecated
+    // Unused
     void MoveEnemyAttack()
     {
         if (enemyAttackGameObject == null)
@@ -103,7 +113,7 @@ public class AttackHandler : MonoBehaviour
     }
 
     // Initial MoveAttack method to reduce redundant code, null reference errors when passing in gameobject that was not instantiated. Will change later to be implemented after a null check
-    // Unused
+    // Move attack object towards the target transform
     void MoveAttack(GameObject attack, Transform target)
     {
         if (attack == null)
