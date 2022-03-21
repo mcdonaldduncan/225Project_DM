@@ -42,17 +42,18 @@ public class AttackHandler : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // Check if player attack is not null
         if (playerAttackGameObject != null)
         {
+            // Move player attack
             MoveAttack(playerAttackGameObject, selectionHandler.selection.transform);
         }
-
+        // Check if enemy attack is not null
         if (enemyAttackGameObject != null)
         {
+            // Move enemy attack
             MoveAttack(enemyAttackGameObject, player.transform);
         }
-        //MovePlayerAttack();
-        //MoveEnemyAttack();
     }
 
     // Check for a selection, check turn, check key input, check attack currently flying. If all pass, flip turn, set attacking to true and launch player attack
@@ -74,7 +75,7 @@ public class AttackHandler : MonoBehaviour
             isAttacking = true;
             playerStats.health += healAmount;
             playerStats.ScaleHealthBar();
-            StartCoroutine(HealDelay(2));
+            StartCoroutine(HealDelay(1));
         }
         // Check if player has an enemy selected
         if (selectionHandler.selection == null)

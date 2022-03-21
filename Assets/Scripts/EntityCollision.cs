@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EntityCollision : MonoBehaviour
 {
@@ -10,20 +11,22 @@ public class EntityCollision : MonoBehaviour
     [SerializeField] public int health;
     [SerializeField] int startingHealth;
 
-    ScoreManager ScoreManager;
+    ScoreManager scoreManager;
+    GameManagement gameManagement;
 
     GameObject healthBar;
+    MeshRenderer healthRend;
 
     Vector3 healthScale;
-    
-    
 
     // Assign value of starting health and cache healthbar gameobject for reference
     private void Start()
     {
         healthBar = transform.GetChild(0).gameObject;
+        healthRend = healthBar.GetComponent<MeshRenderer>();
         healthScale = healthBar.transform.localScale;
-        ScoreManager = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
+        scoreManager = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
+        gameManagement = GameObject.Find("GameManager").GetComponent<GameManagement>();
         ScaleHealthBar();
     }
 
@@ -32,14 +35,20 @@ public class EntityCollision : MonoBehaviour
     {
         health--;
         ScaleHealthBar();
-        if (health <= 0)
+        if (health > 0)
+            return;
+
+        // Increment enemies defeated if gameobject is an enemy
+        if (gameObject.CompareTag("Enemy"))
         {
-            Destroy(gameObject);
-            if (gameObject.CompareTag("Enemy"))
-            {
-                ScoreManager.enemiesDefeated++;
-            }
+            scoreManager.enemiesDefeated++;
         }
+        // Set gameover to true if gameobject is player
+        if (gameObject.CompareTag("Player"))
+        {
+            gameManagement.gameOver = true;
+        }
+        Destroy(gameObject);
     }
 
     // Scale and color health bar based off remaining health compared to starting health
@@ -51,15 +60,15 @@ public class EntityCollision : MonoBehaviour
 
         if (health <= (float)startingHealth / 3f)
         {
-            healthBar.GetComponent<MeshRenderer>().material = lowHealth;
+            healthRend.material = lowHealth;
         }
         else if (health <= (float)startingHealth / 3f * 2f)
         {
-            healthBar.GetComponent<MeshRenderer>().material = medHealth;
+            healthRend.material = medHealth;
         }
         else
         {
-            healthBar.GetComponent<MeshRenderer>().material = highHealth;
+            healthRend.material = highHealth;
         }
     }
 }

@@ -9,6 +9,8 @@ public class GameManagement : MonoBehaviour
     [SerializeField] GameObject boss;
     [SerializeField] string nextLevelName;
 
+    [System.NonSerialized] public bool gameOver;
+
     ScoreManager scoreManager;
     AttackHandler attackHandler;
     EntityCollision playerStats;
@@ -31,6 +33,7 @@ public class GameManagement : MonoBehaviour
     {
         AdvancePlayer();
         CheckNextScene();
+        CheckGameOver();
     }
 
     // Check if player should advance position and do so if necessary
@@ -41,11 +44,7 @@ public class GameManagement : MonoBehaviour
         if (!shouldContinue)
             return;
 
-        //Vector3 offsetVector = player.transform.position + new Vector3(35, 0, 0);
-        //float step = Time.deltaTime * 2;
-        //player.transform.position = Vector3.MoveTowards(player.transform.position, offsetVector, step);
-
-        player.transform.Translate(35, 0, 0);
+        player.transform.Translate(40, 0, 0);
         shouldContinue = false;
         attackHandler.enemies[0] = boss;
     }
@@ -66,5 +65,19 @@ public class GameManagement : MonoBehaviour
         // Load next scene
         SceneManager.LoadScene(nextLevelName);
 
+    }
+
+    // Check if the game should end, if so save tracked scores and load game over scene
+    void CheckGameOver()
+    {
+        if (!gameOver)
+            return;
+
+        // Set persistent values
+        PlayerPrefs.SetInt("TotalEnemies", scoreManager.enemiesDefeated);
+        PlayerPrefs.SetInt("LevelsCleared", scoreManager.levelsCleared);
+        PlayerPrefs.SetInt("CurrentHealth", playerStats.health);
+
+        SceneManager.LoadScene("GameOver");
     }
 }
