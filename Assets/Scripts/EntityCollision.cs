@@ -42,13 +42,14 @@ public class EntityCollision : MonoBehaviour
         if (gameObject.CompareTag("Enemy"))
         {
             scoreManager.enemiesDefeated++;
+            Destroy(gameObject);
         }
         // Set gameover to true if gameobject is player
         if (gameObject.CompareTag("Player"))
         {
             gameManagement.gameOver = true;
         }
-        Destroy(gameObject);
+        
     }
 
     // Scale and color health bar based off remaining health compared to starting health

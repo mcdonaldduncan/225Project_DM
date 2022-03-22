@@ -6,7 +6,6 @@ public class CameraController : MonoBehaviour
 {
     [SerializeField] GameObject player;
 
-
     // Update is called once per frame
     void Update()
     {
